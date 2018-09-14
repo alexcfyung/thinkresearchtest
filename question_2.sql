@@ -1,0 +1,3 @@
+SELECT * from thinkresearchtest.patients WHERE last_name LIKE '%mit%';
+SELECT DISTINCT patients.id, patients.mrn, patients.first_name, patients.middle_name, patients.last_name, patients.weight, patients.height from thinkresearchtest.patients JOIN thinkresearchtest.encounters ON patients.id = encounters.patient_id WHERE discharged_at IS NOT NULL;
+SELECT DISTINCT patients.id, patients.mrn, patients.first_name, patients.middle_name, patients.last_name, patients.weight, patients.height from thinkresearchtest.patients JOIN thinkresearchtest.encounters ON patients.id = encounters.patient_id WHERE admitted_at BETWEEN "2014-07-05" AND "2014-08-19";

@@ -1,0 +1,50 @@
+<%= form_with model: [@patient, @encounter], local: true do |form| %>
+
+  <% if @encounter.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@encounter.errors.count, "error") %> prohibited
+        this encounter from being saved:
+      </h2>
+      <ul>
+        <% @encounter.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <p>
+    <%= form.label :visit_number %><br>
+    <%= form.text_field :visit_number %>
+  </p>
+  
+  <p>
+    <%= form.label :admitted_at %><br>
+    <%= datetime_select :encounter, :admitted_at %>
+  </p>
+  
+  <p>
+    <%= form.label :discharged_at %><br> 
+    <%= datetime_select :encounter, :discharged_at %>
+  </p>
+  
+  <p>
+    <%= form.label :location %><br>
+    <%= form.text_field :location %>
+  </p>
+  
+  <p>
+    <%= form.label :room %><br>
+    <%= form.text_field :room %>
+  </p>
+ 
+  <p>
+    <%= form.label :bed %><br>
+    <%= form.text_field :bed %>
+  </p>
+ 
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>

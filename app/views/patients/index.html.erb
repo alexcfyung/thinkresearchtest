@@ -1,0 +1,26 @@
+<h1>Listing patients</h1>
+ 
+<%= link_to 'Add Patient', new_patient_path %>
+<table>
+  <tr>
+    <th>First Name</th>
+    <th>Last Name</th>
+	<th>MRN</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @patients.each do |patient| %>
+    <tr>
+      <td><%= patient.first_name %></td>
+      <td><%= patient.last_name %></td>
+      <td><%= patient.mrn %></td>
+      <td>
+	  <%= link_to 'Show', patient_path(patient) %>
+	  <%= link_to 'Edit', edit_patient_path(patient) %>
+	  <%= link_to 'Destroy', patient_path(patient), 
+			method: :delete,
+			data: { confirm: 'Delete this patient will also delete all the encounters, are you sure?' } %>
+	  </td>
+    </tr>
+  <% end %>
+</table>

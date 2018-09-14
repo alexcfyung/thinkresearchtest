@@ -1,0 +1,57 @@
+<p>
+  <strong>First Name:</strong>
+  <%= @patient.first_name %>
+</p>
+ 
+<p>
+  <strong>Middle Name:</strong>
+  <%= @patient.middle_name %>
+</p>
+
+<p>
+  <strong>Last Name:</strong>
+  <%= @patient.last_name %>
+</p>
+
+<p>
+  <strong>Weight:</strong>
+  <%= @patient.weight %>
+</p>
+
+<p>
+  <strong>Height:</strong>
+  <%= @patient.height %>
+</p>
+
+<p>
+  <strong>MRN:</strong>
+  <%= @patient.mrn %>
+</p>
+
+<%= link_to 'Edit', edit_patient_path(@patient) %> |
+<%= link_to 'Back', patients_path %><br><br>
+
+<%= link_to 'Add Encounter', new_patient_encounter_path(@patient) %>
+<table>
+  <tr>
+    <th>Visit Number</th>
+    <th>Admitted At</th>
+	<th>Discharged At</th>
+    <th>Actions</th>
+  </tr>
+ 
+  <% @patient.encounters.each do |encounter| %>
+    <tr>
+      <td><%= encounter.visit_number %></td>
+      <td><%= encounter.admitted_at %></td>
+      <td><%= encounter.discharged_at %></td>
+      <td>
+	  <%= link_to 'Show', patient_encounter_path(@patient, encounter) %>
+	  <%= link_to 'Edit', edit_patient_encounter_path(@patient, encounter) %>
+	  <%= link_to 'Destroy', patient_encounter_path(@patient, encounter), 
+			method: :delete,
+			data: { confirm: 'Are you sure to delete this encounter?' } %>
+	  </td>
+    </tr>
+  <% end %>
+</table>
